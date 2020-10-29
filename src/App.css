@@ -1,0 +1,29 @@
+.page {
+  display: grid;
+  grid-template-areas:
+    "h h h"
+    "s c c";
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+  grid-gap: 10px;
+}
+
+.header {
+  grid-area: h;
+  background-color: tomato;
+}
+
+.header img {
+  width: 100%;
+  height: 50px;
+}
+
+.sidebar {
+  grid-area: s;
+  background-color: turquoise;
+}
+
+.content {
+  grid-area: c;
+  background-color: violet;
+}
