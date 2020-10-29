@@ -9,9 +9,9 @@ import Profile from './components/profile';
 const App = () => {
   return (
     <div className='page'>
-      <header className='header'><Header /></header>
-      <nav className='sidebar'><Sidebar /></nav>
-      <div className='profile'><Profile /></div>
+      <div className='page__header'><Header /></div>
+      <div className='page__sidebar'><Sidebar /></div>
+      <div className='page__profile'><Profile /></div>
     </div>
   );
 }

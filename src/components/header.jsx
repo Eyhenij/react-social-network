@@ -3,8 +3,13 @@ import './header.css';
 
 const Header = () => {
    return (
-      <div className=''>
-         <img src='https://cdn.pixabay.com/photo/2015/08/03/10/27/banner-873111__340.jpg' alt='logo'></img>
+      <div className='menu'>
+         <div className='menu__list'>
+            <a className='menu__item menu__item_active' href='#s'>Title 1</a>
+            <a className='menu__item' href='#s'>Title 2</a>
+            <a className='menu__item' href='#s'>Title 3</a>
+            <a className='menu__item' href='#s'>Title 4</a>
+         </div>
       </div>
    )
 }

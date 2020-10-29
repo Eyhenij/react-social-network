@@ -4,8 +4,8 @@ import './profile.css';
 const Profile = () => {
    return (
       <div className='profile'>
-         <img src='https://vjoy.cc/wp-content/uploads/2019/07/1-1.jpg' alt='picture'></img>
-      </div>
+         <img class='profile__img' src=' https://vjoy.cc/wp-content/uploads/2019/07/1-1.jpg' alt='picture'></img>
+      </div >
    )
 }
 

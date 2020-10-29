@@ -1,0 +1,20 @@
+.menu {
+   display: block;
+   height: 50px;
+   text-align: center;
+   color: black;
+}
+
+.menu__list {
+}
+
+.menu__item {
+}
+
+.menu__item:hover {
+   color: red;
+}
+
+.menu__item_active {
+   color: rgb(255, 153, 0);
+}

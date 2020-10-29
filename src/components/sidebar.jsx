@@ -3,13 +3,13 @@ import './sidebar.css';
 
 const Sidebar = () => {
    return (
-      <ul className=''>
-         <li><a href='#s'>Profile</a></li>
-         <li><a href='#s'>Messages</a></li>
-         <li><a href='#s'>News</a></li>
-         <li><a href='#s'>Music</a></li>
-         <li><a href='#s'>Settings</a></li>
-      </ul>
+      <div class='sidebar'>
+         <p><a className='sidebar__item' href='#s'>Profile</a></p>
+         <p><a className='sidebar__item' href='#s'>Messages</a></p>
+         <p><a className='sidebar__item' href='#s'>News</a></p>
+         <p><a className='sidebar__item' href='#s'>Music</a></p>
+         <p><a className='sidebar__item' href='#s'>Settings</a></p>
+      </div>
    )
 }
 

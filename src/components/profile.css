@@ -1,7 +1,8 @@
 .profile {
    background-color: teal;
+   color: white;
 }
 
-.profile img {
-   height: 500px;
+.profile__img {
+   width: 100%;
 }
