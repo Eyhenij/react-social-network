@@ -1,0 +1,16 @@
+.item {
+   position: relative;
+   width: 50%;
+   border: 2px solid black;
+   background-color: rgb(154, 46, 255);
+}
+
+.item img {
+   width: 50px;
+   border-radius: 50px;
+}
+
+.buttom_like {
+   text-align: right;
+   color: rgb(0, 0, 0);
+}

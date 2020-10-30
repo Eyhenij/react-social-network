@@ -1,5 +1,5 @@
 .page {
-  width: 1200px;
+  max-width: 1200px;
   margin: 0px auto;
   display: grid;
   grid-template-areas:
@@ -22,4 +22,13 @@
 
 .page__profile {
   grid-area: p;
+}
+
+@media screen and (max-width: 640px) {
+  .page {
+    grid-template-areas:
+      "s h"
+      "p p";
+    grid-template-columns: 1fr 1fr;
+  }
 }

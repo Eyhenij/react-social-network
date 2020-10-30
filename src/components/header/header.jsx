@@ -9,8 +9,8 @@ const Header = () => {
             <a className={s.item} href='#s'>Title 2</a>
             <a className={s.item} href='#s'>Title 3</a>
             <a className={s.item} href='#s'>Title 4</a>
-            <p>Lorem ipsum dolor sit amet.</p>
          </div>
+         <p>Lorem ipsum dolor sit amet.</p>
       </div >
    )
 }

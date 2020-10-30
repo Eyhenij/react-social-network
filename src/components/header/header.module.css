@@ -7,20 +7,15 @@
    /* color: rgb(247, 47, 47); */
 }
 
-a {
-   text-decoration: none;
-}
-
 .menu {
    display: block;
    height: 50px;
+   /* justify-content: space-between; */
    text-align: center;
 }
 
-.list {
-}
-
 .item {
+   margin: 0px 50px 10px 20px;
    color: rgb(0, 0, 0);
 }
 
