@@ -9,10 +9,13 @@ let arrPosts = [
     {id: 4, likesCounte:3 , post: 'ahhrrrr' }
 ]
 
+let posts = arrPosts.map ( p => <Post message={p.post} likesCount={p.likesCounte} />)
+
 const MyPosts = () => {
    return (
       <div className={s.post}>
-         <p><Post message={arrPosts[3].post} likesCount={arrPosts[3].likesCounte} /></p>
+          <p>{posts}</p>
+         {/*<p><Post message={arrPosts[3].post} likesCount={arrPosts[3].likesCounte} /></p>*/}
       </div>
    )
 }

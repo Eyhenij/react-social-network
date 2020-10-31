@@ -18,27 +18,19 @@ let arrMessages = [
     {id: 4, message: 'How is your study?' }
 ]
 
-let k = arrCommunity.map (
-    j => <DialogItem name={j.name} id={j.id}/>
-)
-
-    // <DialogItem name={arrCommunity[0].name} id={arrCommunity[0].id}/>
-
-let x = arrMessages.map(
-    y => <Message message={y.message} id={y.id}/>
-)
-
+let communityItems = arrCommunity.map ( n => <DialogItem name={n.name} id={n.id}/> )
+let messagesElements = arrMessages.map( m => <Message message={m.message} id={m.id}/> )
 
 const Messages = () => {
     return (
             <div className={s.community}>
                 <div className={s.community__item}>
-                    {k}
+                    {communityItems}
                     {/*<DialogItem name={arrCommunity[0].name} id={arrCommunity[0].id}/>*/}
                 </div>
                 <div className={s.messages}>
-                    {x}
-                   {/*<Message message={arrMessages[3].message} id={arrMessages[3].id}/>*/}
+                    {messagesElements}
+                    {/*<Message message={arrMessages[3].message} id={arrMessages[3].id}/>*/}
                 </div>
             </div>
     )
