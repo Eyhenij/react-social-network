@@ -24,6 +24,11 @@
   grid-area: p;
 }
 
+.page__messages {
+  /*grid-area: d;*/
+  background-color: cornflowerblue;
+}
+
 @media screen and (max-width: 640px) {
   .page {
     grid-template-areas:
