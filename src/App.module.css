@@ -1,6 +1,6 @@
 .page {
   max-width: 1200px;
-  margin: 0px auto;
+  margin: 0 auto;
   display: grid;
   grid-template-areas:
     "h h h"
@@ -24,7 +24,7 @@
   grid-area: p;
 }
 
-.page__messages {
+.page__content {
   /*grid-area: d;*/
   background-color: cornflowerblue;
 }

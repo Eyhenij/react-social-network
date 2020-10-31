@@ -4,8 +4,8 @@ import Like from './../likes/like.jsx';
 
 const Post = (props) => {
    return (
-      <div className={s.item}>
-         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSSrsa7JI0Kur9LTDnCQ-N3ctRlKSJ9zzbOFw&usqp=CAU' alt='аватарка'></img>
+      <div className={s.post__item}>
+         <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSSrsa7JI0Kur9LTDnCQ-N3ctRlKSJ9zzbOFw&usqp=CAU' alt='аватарка'/>
          {props.message}
          <div className={s.buttom_like}>
             <Like /> 

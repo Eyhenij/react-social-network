@@ -1,12 +1,15 @@
 import React from 'react';
-import MyPosts from './myPosts/myPosts.jsx';
 import s from './profile.module.css';
+import MyPosts from './myPosts/myPosts.jsx';
+import ProfileInfo from "./profileInfo/profileInfo";
 
 const Profile = () => {
    return (
-      <div className={s.profile}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium veritatis, ratione incidunt recusandae tempore distinctio. Exercitationem quaerat nulla ut quo in libero perspiciatis, molestiae, asperiores tempore earum, commodi veniam voluptatibus.
-         <img className={s.profile__img} src=' https://vjoy.cc/wp-content/uploads/2019/07/1-1.jpg' alt='picture' alt='картинка'></img>
+      <div className={s.profile}>
+         <ProfileInfo />
+         <div className={s.profile__posts}>
          <MyPosts />
+         </div>
       </div >
    )
 }

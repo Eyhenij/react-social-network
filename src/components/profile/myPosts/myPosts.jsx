@@ -2,12 +2,17 @@ import React from 'react';
 import s from './myPosts.module.css';
 import Post from './post/post.jsx'
 
+let arrPosts = [
+    {id: 1, likesCounte:15, post: 'Hi! How are you?'  },
+    {id: 2, likesCounte:12, post: 'This is my first post' },
+    {id: 3, likesCounte:9 , post: 'blablabla'},
+    {id: 4, likesCounte:3 , post: 'ahhrrrr' }
+]
+
 const MyPosts = () => {
    return (
       <div className={s.post}>
-         <p>There are my Posts:</p>
-         <p><Post message='Hi! How are you?' likesCount='15' /></p>
-         <p><Post message='This is my first post' likesCount='20' /></p>
+         <p><Post message={arrPosts[3].post} likesCount={arrPosts[3].likesCounte} /></p>
       </div>
    )
 }

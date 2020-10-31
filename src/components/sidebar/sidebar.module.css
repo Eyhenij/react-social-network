@@ -1,8 +1,19 @@
+.sidebar {
+   padding: 20px;
+}
+
 .item {
-   color: black;
+   text-decoration: none;
+   color: #626161;
 }
 
 .item:hover {
    background-color: rgb(0, 163, 163);
    color: white;
 }
+
+.active {
+   color: rgb(220, 150, 0);
+   padding: 0 0 0 20px;
+}
+
