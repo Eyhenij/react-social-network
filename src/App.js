@@ -14,11 +14,11 @@ const App = () => {
     return (
         <BrowserRouter>
             <div className={s.page}>
-                <div className={s.page__header}><Header/></div>
-                <div className={s.page__sidebar}><Sidebar/></div>
+                <div className={s.page__header}><Header /></div>
+                <div className={s.page__sidebar}><Sidebar /></div>
                 <div className={s.page__content}>
-                    <Route path='/profile' component={Profile}/>
-                    <Route path='/messages' component={Messages}/>
+                    <Route path='/profile' render={ () => <Profile />}/>
+                    <Route path='/messages' render={ () => <Messages />}/>
                     <Route path='/news' component={News}/>
                     <Route path='/music' component={Music}/>
                     <Route path='/settings' component={Settings}/>
