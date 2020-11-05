@@ -18,6 +18,7 @@ let state = {
             {id: 3, message: 'What are you doing?'},
             {id: 4, message: 'How is your study?'}
         ],
+        newMessageText: 'Please, write your message',
         arrCommunity: [
             {
                 id: 1,
@@ -67,3 +68,19 @@ export let updateNewPostText = (updatePost) => {
     state.postsPage.newPostText = updatePost;
     reRenderEntireTree(state);
 }
+
+export let addMessage = () => {
+    let newMessage = {
+        id: 5,
+        message: state.messagesPage.newMessageText
+    }
+    state.messagesPage.arrMessages.push(newMessage);
+    state.messagesPage.newMessageText = '';
+    reRenderEntireTree(state);
+}
+
+export let updateNewMessageText = (updateMessage) => {
+    state.messagesPage.newMessageText = updateMessage;
+    reRenderEntireTree(state);
+}
+

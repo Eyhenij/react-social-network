@@ -9,9 +9,14 @@ const Messages = (props) => {
     let messagesItems = props.messagesPage.arrMessages.map(m => <Message message={m.message} id={m.id}/>)
     let newMessageElement = React.createRef();
     const addMessage = () => {
-        let messageText = newMessageElement.current.value;
-        alert(messageText);
+        props.addMessage();
     }
+
+    let onMessageChange = () => {
+        let messageText = newMessageElement.current.value;
+        props.updateNewMessageText(messageText);
+    }
+
     return (
         <div className={s.community}>
             <div className={s.community__item}>
@@ -20,7 +25,11 @@ const Messages = (props) => {
             <div className={s.messages}>
                 {messagesItems}
                 <div>
-                    <textarea ref={newMessageElement} />
+                    <textarea
+                        ref={newMessageElement}
+                        value={props.messagesPage.newMessageText}
+                        onChange={onMessageChange}
+                    />
                 </div>
                 <div>
                     <button onClick={ addMessage }>Send message</button>

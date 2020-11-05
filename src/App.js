@@ -24,7 +24,11 @@ const App = (props) => {
                             updateNewPostText={props.updateNewPostText}
                         />}/>
                     <Route path='/messages' render={()=>
-                        <Messages messagesPage={props.state.messagesPage}/>}/>
+                        <Messages
+                            messagesPage={props.state.messagesPage}
+                            addMessage={props.addMessage}
+                            updateNewMessageText={props.updateNewMessageText}
+                        />}/>
                     <Route path='/news' render={ ()=> <News />}/>
                     <Route path='/music' render={ ()=> <Music />}/>
                     <Route path='/settings' render={()=> <Settings />}/>
