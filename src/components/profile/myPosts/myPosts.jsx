@@ -4,25 +4,32 @@ import Post from "./post/post";
 
 
 const MyPosts = (props) => {
-    let postsItems = props.postsPage.arrPosts.map (p => <Post message={p.post} likesCounte={p.likesCounte}/>)
+    let postsItems = props.postsPage.arrPosts.map(p => <Post message={p.post} likesCounte={p.likesCounte}/>)
     let newPostElement = React.createRef();
     const addPost = () => {
+        props.addPost();
+    }
+
+    let onPostChange = () => {
         let postText = newPostElement.current.value;
-        props.addPost(postText);              // я это выражение не понимаю...
-        newPostElement.current.value = '';
+        props.updateNewPostText(postText);
     }
 
     return (
         <div>
             <div>
-                <textarea ref={newPostElement} value={props.postsPage.newPostText}/>
+                <textarea
+                    ref={newPostElement}
+                    value={props.postsPage.newPostText}
+                    onChange={onPostChange}
+                />
             </div>
             <div>
-                <button onClick={ addPost }>Add post</button>
+                <button onClick={addPost}>Add post</button>
             </div>
-        <div className={s.post}>
-            {postsItems}
-        </div>
+            <div className={s.post}>
+                {postsItems}
+            </div>
         </div>
     )
 }

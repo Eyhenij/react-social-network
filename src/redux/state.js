@@ -8,9 +8,7 @@ let state = {
             {id: 3, likesCounte: 9, post: 'blablabla'},
             {id: 4, likesCounte: 3, post: 'ahhrrrr'}
         ],
-        newPostText: [
-            'There is some value'
-        ],
+        newPostText: 'There is some value',
     },
 
     messagesPage: {
@@ -21,16 +19,22 @@ let state = {
             {id: 4, message: 'How is your study?'}
         ],
         arrCommunity: [
-            {id: 1, name: 'Max', avatar: 'https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png'},
-            {id: 2, name: 'Olga', avatar: 'https://cdn1.iconfinder.com/data/icons/users-avatars-2/128/girl_avatar_4-512.png'},
+            {
+                id: 1,
+                name: 'Max',
+                avatar: 'https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png'
+            },
+            {
+                id: 2,
+                name: 'Olga',
+                avatar: 'https://cdn1.iconfinder.com/data/icons/users-avatars-2/128/girl_avatar_4-512.png'
+            },
             {id: 3, name: 'Peter', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/02-512.png'},
             {id: 4, name: 'John', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'}
         ]
     },
 
-    friendsPage: [
-
-    ],
+    friendsPage: [],
 
     sidebarItems: [
         'item1',
@@ -48,13 +52,18 @@ let state = {
 }
 export default state;
 
-export let addPost = (postMessage) => {
+export let addPost = () => {
     let newPost = {
-        id:5,
+        id: 5,
         likesCounte: 0,
-        post: postMessage
+        post: state.postsPage.newPostText
     };
-
     state.postsPage.arrPosts.push(newPost);
+    state.postsPage.newPostText = '';
+    reRenderEntireTree(state);
+}
+
+export let updateNewPostText = (updatePost) => {
+    state.postsPage.newPostText = updatePost;
     reRenderEntireTree(state);
 }
