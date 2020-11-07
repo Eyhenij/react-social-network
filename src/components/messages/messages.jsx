@@ -9,12 +9,12 @@ const Messages = (props) => {
     let messagesItems = props.messagesPage.arrMessages.map(m => <Message message={m.message} id={m.id}/>)
     let newMessageElement = React.createRef();
     const addMessage = () => {
-        props.addMessage();
+        props.dispatch({type: 'ADD-MESSAGE'});
     }
 
     let onMessageChange = () => {
         let messageText = newMessageElement.current.value;
-        props.updateNewMessageText(messageText);
+        props.dispatch({type: 'UPDATE-NEW-MESSAGE-TEXT', updateMessage: messageText});
     }
 
     return (

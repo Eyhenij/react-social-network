@@ -50,40 +50,79 @@ let store = {
             'item4'
         ]
     },
-    getState(){
-        return(this._state);
-    },
     _callSubscriber() {
     },
-    addPost(){
-        let newPost = {
-            id: 5,
-            likesCounte: 0,
-            post: this._state.postsPage.newPostText
-        };
-        this._state.postsPage.arrPosts.push(newPost);
-        this._state.postsPage.newPostText = '';
-        this._callSubscriber(this._state);
+
+    getState() {
+        return (this._state);
     },
-    updateNewPostText(updatePost){
-        this._state.postsPage.newPostText = updatePost;
-        this._callSubscriber(this._state);
-    },
-    addMessage(){
-        let newMessage = {
-            id: 5,
-            message: this._state.messagesPage.newMessageText
-        }
-        this._state.messagesPage.arrMessages.push(newMessage);
-        this._state.messagesPage.newMessageText = '';
-        this._callSubscriber(this._state);
-    },
-    updateNewMessageText(updateMessage){
-        this._state.messagesPage.newMessageText = updateMessage;
-        this._callSubscriber(this._state);
-    },
-    subscribe(observer){
+    subscribe(observer) {
         this._callSubscriber = observer;
+    },
+
+    // addPost() {
+    //     let newPost = {
+    //         id: 5,
+    //         likesCounte: 0,
+    //         post: this._state.postsPage.newPostText
+    //     };
+    //     this._state.postsPage.arrPosts.push(newPost);
+    //     this._state.postsPage.newPostText = '';
+    //     this._callSubscriber(this._state);
+    // },
+    // updateNewPostText(updatePost) {
+    //     this._state.postsPage.newPostText = updatePost;
+    //     this._callSubscriber(this._state);
+    // },
+    // addMessage() {
+    //     let newMessage = {
+    //         id: 5,
+    //         message: this._state.messagesPage.newMessageText
+    //     }
+    //     this._state.messagesPage.arrMessages.push(newMessage);
+    //     this._state.messagesPage.newMessageText = '';
+    //     this._callSubscriber(this._state);
+    // },
+    // updateNewMessageText(updateMessage) {
+    //     this._state.messagesPage.newMessageText = updateMessage;
+    //     this._callSubscriber(this._state);
+    // },
+
+    dispatch(action) {
+        if (action.type === 'ADD-POST') {
+            // return (this.addPost())
+
+            let newPost = {
+                id: 5,
+                likesCounte: 0,
+                post: this._state.postsPage.newPostText
+            };
+            this._state.postsPage.arrPosts.push(newPost);
+            this._state.postsPage.newPostText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+            // return (this.updateNewPostText())
+
+            this._state.postsPage.newPostText = action.updatePost;
+            this._callSubscriber(this._state);
+
+        } else if (action.type === 'ADD-MESSAGE') {
+            // return (this.addMessage())
+
+            let newMessage = {
+                id: 5,
+                message: this._state.messagesPage.newMessageText
+            }
+            this._state.messagesPage.arrMessages.push(newMessage);
+            this._state.messagesPage.newMessageText = '';
+            this._callSubscriber(this._state);
+        } else if (action.type === 'UPDATE-NEW-MESSAGE-TEXT') {
+            // return(this.updateNewMessageText())
+
+            this._state.messagesPage.newMessageText = action.updateMessage;
+            this._callSubscriber(this._state);
+
+        }
     }
 }
 

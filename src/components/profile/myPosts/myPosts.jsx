@@ -7,12 +7,12 @@ const MyPosts = (props) => {
     let postsItems = props.postsPage.arrPosts.map(p => <Post message={p.post} likesCounte={p.likesCounte}/>)
     let newPostElement = React.createRef();
     const addPost = () => {
-        props.addPost();
+        props.dispatch({type: 'ADD-POST'});
     }
 
     let onPostChange = () => {
         let postText = newPostElement.current.value;
-        props.updateNewPostText(postText);
+        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', updatePost: postText});
     }
 
     return (
