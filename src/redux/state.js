@@ -67,7 +67,7 @@ export const addPost = () => {
 
 export const updateNewPostText = (updatePost) => {
     state.postsPage.newPostText = updatePost;
-    reRenderEntireTree();
+    reRenderEntireTree(state);
 }
 
 export const addMessage = () => {
@@ -77,12 +77,12 @@ export const addMessage = () => {
     }
     state.messagesPage.arrMessages.push(newMessage);
     state.messagesPage.newMessageText = '';
-    reRenderEntireTree();
+    reRenderEntireTree(state);
 }
 
 export const updateNewMessageText = (updateMessage) => {
     state.messagesPage.newMessageText = updateMessage;
-    reRenderEntireTree();
+    reRenderEntireTree(state);
 }
 
 export const subscribe = (observer) => {
