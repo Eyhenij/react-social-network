@@ -7,12 +7,11 @@ import Messages from "./components/messages/messages.jsx";
 import News from "./components/news/news";
 import Music from "./components/music/music";
 import Settings from "./components/settings/settings";
-import {Route, BrowserRouter} from "react-router-dom";
+import {Route} from "react-router-dom";
 
 
 const App = (props) => {
     return (
-        <BrowserRouter>
             <div className={s.page}>
                 <div className={s.page__header}><Header/></div>
                 <div className={s.page__sidebar}><Sidebar/></div>
@@ -34,7 +33,6 @@ const App = (props) => {
                     <Route path='/settings' render={()=> <Settings />}/>
                 </div>
             </div>
-        </BrowserRouter>
     );
 }
 
