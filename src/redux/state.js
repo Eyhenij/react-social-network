@@ -1,95 +1,93 @@
-let reRenderEntireTree = () => {
-    // console.log('state has been changed')
-}
+let store = {
+    _state: {
+        postsPage: {
+            arrPosts: [
+                {id: 1, likesCounte: 15, post: 'Hi! How are you?'},
+                {id: 2, likesCounte: 12, post: 'This is my first post'},
+                {id: 3, likesCounte: 9, post: 'blablabla'},
+                {id: 4, likesCounte: 3, post: 'ahhrrrr'}
+            ],
+            newPostText: 'There is some value',
+        },
 
-let state = {
-    postsPage: {
-        arrPosts: [
-            {id: 1, likesCounte: 15, post: 'Hi! How are you?'},
-            {id: 2, likesCounte: 12, post: 'This is my first post'},
-            {id: 3, likesCounte: 9, post: 'blablabla'},
-            {id: 4, likesCounte: 3, post: 'ahhrrrr'}
-        ],
-        newPostText: 'There is some value',
-    },
+        messagesPage: {
+            arrMessages: [
+                {id: 1, message: 'Hi! How are you?'},
+                {id: 2, message: 'Hello'},
+                {id: 3, message: 'What are you doing?'},
+                {id: 4, message: 'How is your study?'}
+            ],
+            newMessageText: 'Please, write your message',
+            arrCommunity: [
+                {
+                    id: 1,
+                    name: 'Max',
+                    avatar: 'https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png'
+                },
+                {
+                    id: 2,
+                    name: 'Olga',
+                    avatar: 'https://cdn1.iconfinder.com/data/icons/users-avatars-2/128/girl_avatar_4-512.png'
+                },
+                {id: 3, name: 'Peter', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/02-512.png'},
+                {id: 4, name: 'John', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'}
+            ]
+        },
 
-    messagesPage: {
-        arrMessages: [
-            {id: 1, message: 'Hi! How are you?'},
-            {id: 2, message: 'Hello'},
-            {id: 3, message: 'What are you doing?'},
-            {id: 4, message: 'How is your study?'}
+        friendsPage: [],
+
+        sidebarItems: [
+            'item1',
+            'item2',
+            'item3',
+            'item4'
         ],
-        newMessageText: 'Please, write your message',
-        arrCommunity: [
-            {
-                id: 1,
-                name: 'Max',
-                avatar: 'https://cdn1.iconfinder.com/data/icons/avatars-55/100/avatar_profile_user_music_headphones_shirt_cool-512.png'
-            },
-            {
-                id: 2,
-                name: 'Olga',
-                avatar: 'https://cdn1.iconfinder.com/data/icons/users-avatars-2/128/girl_avatar_4-512.png'
-            },
-            {id: 3, name: 'Peter', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/02-512.png'},
-            {id: 4, name: 'John', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'}
+
+        headerItems: [
+            'item1',
+            'item2',
+            'item3',
+            'item4'
         ]
     },
-
-    friendsPage: [],
-
-    sidebarItems: [
-        'item1',
-        'item2',
-        'item3',
-        'item4'
-    ],
-
-    headerItems: [
-        'item1',
-        'item2',
-        'item3',
-        'item4'
-    ]
-}
-
-export const addPost = () => {
-    let newPost = {
-        id: 5,
-        likesCounte: 0,
-        post: state.postsPage.newPostText
-    };
-    state.postsPage.arrPosts.push(newPost);
-    state.postsPage.newPostText = '';
-    reRenderEntireTree(state);
-}
-
-export const updateNewPostText = (updatePost) => {
-    state.postsPage.newPostText = updatePost;
-    reRenderEntireTree(state);
-}
-
-export const addMessage = () => {
-    let newMessage = {
-        id: 5,
-        message: state.messagesPage.newMessageText
+    getState(){
+        return(this._state);
+    },
+    _callSubscriber() {
+    },
+    addPost(){
+        let newPost = {
+            id: 5,
+            likesCounte: 0,
+            post: this._state.postsPage.newPostText
+        };
+        this._state.postsPage.arrPosts.push(newPost);
+        this._state.postsPage.newPostText = '';
+        this._callSubscriber(this._state);
+    },
+    updateNewPostText(updatePost){
+        this._state.postsPage.newPostText = updatePost;
+        this._callSubscriber(this._state);
+    },
+    addMessage(){
+        let newMessage = {
+            id: 5,
+            message: this._state.messagesPage.newMessageText
+        }
+        this._state.messagesPage.arrMessages.push(newMessage);
+        this._state.messagesPage.newMessageText = '';
+        this._callSubscriber(this._state);
+    },
+    updateNewMessageText(updateMessage){
+        this._state.messagesPage.newMessageText = updateMessage;
+        this._callSubscriber(this._state);
+    },
+    subscribe(observer){
+        this._callSubscriber = observer;
     }
-    state.messagesPage.arrMessages.push(newMessage);
-    state.messagesPage.newMessageText = '';
-    reRenderEntireTree(state);
 }
 
-export const updateNewMessageText = (updateMessage) => {
-    state.messagesPage.newMessageText = updateMessage;
-    reRenderEntireTree(state);
-}
-
-export const subscribe = (observer) => {
-    reRenderEntireTree = observer;
-}
-
-export default state;
+export default store;
 
 
 
