@@ -8,11 +8,18 @@
   grid-template-rows: 50px;
   grid-template-columns: 1fr 5fr;
   grid-gap: 3px;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fdfdfc;
 }
 
 .page__header {
   grid-area: h;
-  background-color: rgb(0, 231, 212);
+  background-color: #fdfdfc;
+  border-bottom: 1px solid black;
 }
 
 .page__sidebar {

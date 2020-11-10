@@ -1,31 +1,31 @@
 import React from 'react';
 import s from './myPosts.module.css';
 import Post from "./post/post";
+import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/postsReduсer";
 
 
 const MyPosts = (props) => {
     let postsItems = props.postsPage.arrPosts.map(p => <Post message={p.post} likesCounte={p.likesCounte}/>)
-    let newPostElement = React.createRef();
     const addPost = () => {
-        props.dispatch({type: 'ADD-POST'});
+        props.dispatch(addPostActionCreator());
     }
 
-    let onPostChange = () => {
-        let postText = newPostElement.current.value;
-        props.dispatch({type: 'UPDATE-NEW-POST-TEXT', updatePost: postText});
+    let onPostChange = (event) => {
+        let postText = event.target.value;
+        props.dispatch(updateNewPostTextActionCreator(postText));
     }
 
     return (
         <div>
             <div>
                 <textarea
-                    ref={newPostElement}
                     value={props.postsPage.newPostText}
+                    placeholder='please, enter your message'
                     onChange={onPostChange}
                 />
             </div>
             <div>
-                <button onClick={addPost}>Add post</button>
+                <button className={s.button} onClick={addPost}>Add post</button>
             </div>
             <div className={s.post}>
                 {postsItems}

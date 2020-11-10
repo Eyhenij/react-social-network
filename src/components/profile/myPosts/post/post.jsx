@@ -1,6 +1,6 @@
 import React from 'react';
 import s from './post.module.css';
-import Like from './../likes/like.jsx';
+import LikeButton from '../likes/likeButton.jsx';
 
 
 const Post = (props) => {
@@ -13,8 +13,7 @@ const Post = (props) => {
                 {props.message}
             </div>
             <div className={s.buttom_like}>
-                <Like/>
-                {props.likesCounte}
+                <LikeButton likesCounte={props.likesCounte}/>
             </div>
         </div>
     )
