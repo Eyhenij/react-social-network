@@ -1,0 +1,15 @@
+.list__item {
+    color: #000000;
+    background-color: olivedrab;
+    border: 1px solid black;
+}
+
+.list__item:hover {
+    background-color: gold;
+}
+
+.item__description {
+}
+
+.item__input {
+}

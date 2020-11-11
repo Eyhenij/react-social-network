@@ -8,6 +8,7 @@ import Music from "./components/music/music";
 import Settings from "./components/settings/settings";
 import {Route} from "react-router-dom";
 import MessagesContainer from "./components/messages/messagesContainer";
+import TasksContainer from "./components/tasks/tasksContainer";
 
 
 const App = (props) => {
@@ -19,7 +20,9 @@ const App = (props) => {
                     <Route path='/profile' render={()=>
                         <Profile store={props.store} />}/>
                     <Route path='/messages' render={()=>
-                        <MessagesContainer store={props.store} />}/>
+                    <MessagesContainer store={props.store} />}/>
+                    <Route path='/tasks' render={()=>
+                        <TasksContainer store={props.store} />}/>
                     <Route path='/news' render={ ()=> <News />}/>
                     <Route path='/music' render={ ()=> <Music />}/>
                     <Route path='/settings' render={()=> <Settings />}/>
