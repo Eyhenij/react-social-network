@@ -3,11 +3,11 @@ import s from './App.module.css';
 import Header from './components/header/header.jsx';
 import Sidebar from './components/sidebar/sidebar.jsx';
 import Profile from './components/profile/profile.jsx';
-import Messages from "./components/messages/messages.jsx";
 import News from "./components/news/news";
 import Music from "./components/music/music";
 import Settings from "./components/settings/settings";
 import {Route} from "react-router-dom";
+import MessagesContainer from "./components/messages/messagesContainer";
 
 
 const App = (props) => {
@@ -17,15 +17,9 @@ const App = (props) => {
                 <div className={s.page__sidebar}><Sidebar/></div>
                 <div className={s.page__content}>
                     <Route path='/profile' render={()=>
-                        <Profile
-                            postsPage={props.state.postsPage}
-                            dispatch={props.dispatch}
-                        />}/>
+                        <Profile store={props.store} />}/>
                     <Route path='/messages' render={()=>
-                        <Messages
-                            messagesPage={props.state.messagesPage}
-                            dispatch={props.dispatch}
-                        />}/>
+                        <MessagesContainer store={props.store} />}/>
                     <Route path='/news' render={ ()=> <News />}/>
                     <Route path='/music' render={ ()=> <Music />}/>
                     <Route path='/settings' render={()=> <Settings />}/>

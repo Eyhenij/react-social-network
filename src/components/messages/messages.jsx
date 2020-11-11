@@ -2,19 +2,20 @@ import React from 'react';
 import s from './messages.module.css';
 import Message from "./dialogs/message/message";
 import DialogItem from "./dialogs/dialodItem";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/messagesReducer";
+import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/reducers/messagesReducer";
 
 
 const Messages = (props) => {
-    let communityItems = props.messagesPage.arrCommunity.map(c => <DialogItem name={c.name} id={c.id}/>)
+    let communityItems = props.messagesPage.arrCommunity.map(c => <DialogItem name={c.name} id={c.id}
+                                                                              avatar={c.avatar}/>)
     let messagesItems = props.messagesPage.arrMessages.map(m => <Message message={m.message} id={m.id}/>)
-    const addMessage = () => {
-        props.dispatch(addMessageActionCreator());
+    const onAddMessage = () => {
+        props.addMessage();
     }
 
     let onMessageChange = (event) => {
         let messageText = event.target.value;
-        props.dispatch(updateNewMessageTextActionCreator(messageText));
+        props.updateNewMessageText(messageText);
     }
 
     return (
@@ -32,7 +33,7 @@ const Messages = (props) => {
                     />
                 </div>
                 <div>
-                    <button onClick={ addMessage }>Send message</button>
+                    <button onClick={onAddMessage}>Send message</button>
                 </div>
             </div>
         </div>
