@@ -11,18 +11,15 @@ import MessagesContainer from "./components/messages/messagesContainer";
 import TasksContainer from "./components/tasks/tasksContainer";
 
 
-const App = (props) => {
+const App = () => {
     return (
             <div className={s.page}>
                 <div className={s.page__header}><Header/></div>
                 <div className={s.page__sidebar}><Sidebar/></div>
                 <div className={s.page__content}>
-                    <Route path='/profile' render={()=>
-                        <Profile store={props.store} />}/>
-                    <Route path='/messages' render={()=>
-                    <MessagesContainer store={props.store} />}/>
-                    <Route path='/tasks' render={()=>
-                        <TasksContainer store={props.store} />}/>
+                    <Route path='/profile' render={()=> <Profile />}/>
+                    <Route path='/messages' render={()=> <MessagesContainer />}/>
+                    <Route path='/tasks' render={()=> <TasksContainer />}/>
                     <Route path='/news' render={ ()=> <News />}/>
                     <Route path='/music' render={ ()=> <Music />}/>
                     <Route path='/settings' render={()=> <Settings />}/>

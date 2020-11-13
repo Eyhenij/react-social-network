@@ -1,27 +1,27 @@
 import React from "react";
 import {addTaskActionCreator, updateNewTaskTextActionCreator} from "../../redux/reducers/tasksReducer";
 import Tasks from "./tasks";
+import {connect} from "react-redux";
 
-
-const TasksContainer = (props) => {
-
-    let state = props.store.getState();
-
-    const addTaskContainer = () => {
-        props.store.dispatch(addTaskActionCreator());
+const mapStateToProps = (state) => {
+    return {
+        tasksPage: state.tasksPage
     }
+};
 
-    let onTaskChangeContainer = (taskText) => {
-        props.store.dispatch(updateNewTaskTextActionCreator(taskText));
+const mapDispatchToProps = (dispatch) => {
+    return {
+
+        addTask: () => {
+            dispatch(addTaskActionCreator())
+        },
+
+        updateNewTaskText: (taskText) => {
+            dispatch(updateNewTaskTextActionCreator(taskText))
+        }
     }
+};
 
-    return (
-        <Tasks
-            addTask={addTaskContainer}
-            updateNewTaskText={onTaskChangeContainer}
-            tasksPage={state.tasksPage}
-        />
-    );
-}
+const TasksContainer = connect(mapStateToProps, mapDispatchToProps)(Tasks);
 
 export default TasksContainer;

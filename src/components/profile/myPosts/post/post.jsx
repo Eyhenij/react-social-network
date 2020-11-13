@@ -10,7 +10,7 @@ const Post = (props) => {
                 <img
                     src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSSrsa7JI0Kur9LTDnCQ-N3ctRlKSJ9zzbOFw&usqp=CAU'
                     alt='аватарка'/>
-                {props.message}
+                {props.post}
             </div>
             <div className={s.buttom_like}>
                 <LikeButton likesCounte={props.likesCounte}/>

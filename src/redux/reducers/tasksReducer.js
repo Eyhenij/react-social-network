@@ -15,18 +15,25 @@ let initialState = {
 const tasksReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case ADD_TASK:
+        case ADD_TASK: {
             let newTask = {
                 id: 5,
                 description: state.newTaskText,
                 completed: false
             };
-            state.arrListData.push(newTask);
-            state.newTaskText = '';
-            return state;
-        case UPDATE_NEW_TASK_TEXT:
-            state.newTaskText = action.updateTask;
-            return state;
+            let stateCopy = {
+                ...state,
+                arrListData: [...state.arrListData]
+            };
+            stateCopy.arrListData.push(newTask);
+            stateCopy.newTaskText = '';
+            return stateCopy;
+        }
+        case UPDATE_NEW_TASK_TEXT: {
+            let stateCopy = {...state};
+            stateCopy.newTaskText = action.updateTask;
+            return stateCopy;
+        }
         default:
             return state;
     }

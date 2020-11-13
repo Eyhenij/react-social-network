@@ -2,20 +2,22 @@ import React from 'react';
 import s from './messages.module.css';
 import Message from "./dialogs/message/message";
 import DialogItem from "./dialogs/dialodItem";
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/reducers/messagesReducer";
 
 
-const Messages = (props) => {
-    let communityItems = props.messagesPage.arrCommunity.map(c => <DialogItem name={c.name} id={c.id}
-                                                                              avatar={c.avatar}/>)
-    let messagesItems = props.messagesPage.arrMessages.map(m => <Message message={m.message} id={m.id}/>)
+const Messages = (state) => {
+    let communityItems = state.messagesPage.arrCommunity.map(c =>
+        <DialogItem name={c.name} id={c.id} avatar={c.avatar} key={c.id}/>
+        )
+    let messagesItems = state.messagesPage.arrMessages.map(m =>
+        <Message message={m.message} id={m.id} key={m.id}/>
+        )
     const onAddMessage = () => {
-        props.addMessage();
+        state.addMessage();
     }
 
     let onMessageChange = (event) => {
         let messageText = event.target.value;
-        props.updateNewMessageText(messageText);
+        state.updateNewMessageText(messageText);
     }
 
     return (
@@ -27,7 +29,7 @@ const Messages = (props) => {
                 {messagesItems}
                 <div>
                     <textarea
-                        value={props.messagesPage.newMessageText}
+                        value={state.messagesPage.newMessageText}
                         placeholder='please, enter your message'
                         onChange={onMessageChange}
                     />
