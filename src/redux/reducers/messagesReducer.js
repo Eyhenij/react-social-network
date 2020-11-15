@@ -3,10 +3,10 @@ const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT';
 
 let initialState = {
     arrMessages: [
-        {id: 1, message: 'Hi! How are you?'},
-        {id: 2, message: 'Hello'},
-        {id: 3, message: 'What are you doing?'},
-        {id: 4, message: 'How is your study?'}
+        {id: 0, message: 'Hi! How are you?'},
+        {id: 1, message: 'Hello'},
+        {id: 2, message: 'What are you doing?'},
+        {id: 3, message: 'How is your study?'}
     ],
     newMessageText: '',
     arrCommunity: [
@@ -24,31 +24,27 @@ let initialState = {
         {id: 4, name: 'John', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'},
     ]
 };
-
 const messagesReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case ADD_MESSAGE: {
             let newMessage = {
-                id: 5,
+                id: state.arrMessages.length,
                 message: state.newMessageText
-            }
-            let stateCopy = {
-                ...state,
-                arrMessages: [...state.arrMessages]
             };
-            stateCopy.arrMessages.push(newMessage);
-            stateCopy.newMessageText = '';
-            return stateCopy;
+            return {
+                ...state,
+                arrMessages: [...state.arrMessages, newMessage],
+                newMessageText: ''
+            };
         }
         case UPDATE_NEW_MESSAGE_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newMessageText = action.updateMessage;
-            return stateCopy;
+            return {
+                ...state,
+                newMessageText: action.updateMessage
+            };
         }
         default:
             return state;
-
     }
 }
 

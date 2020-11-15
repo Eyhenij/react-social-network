@@ -3,36 +3,34 @@ const UPDATE_NEW_TASK_TEXT = 'UPDATE-NEW-TASK-TEXT';
 
 let initialState = {
     arrListData: [
-        { id: 0, description: 'Сходить в магазин', completed: false },
-        { id: 1, description: 'Помыть кота', completed: false },
-        { id: 2, description: 'закончить тестовое задание', completed: false },
-        { id: 3, description: 'Подготовить презентацию', completed: false },
-        { id: 4, description: 'Посмотреть 100 лекций по react', completed: false }
+        {id: 0, description: 'Сходить в магазин', completed: false},
+        {id: 1, description: 'Помыть кота', completed: false},
+        {id: 2, description: 'закончить тестовое задание', completed: false},
+        {id: 3, description: 'Подготовить презентацию', completed: false},
+        {id: 4, description: 'Посмотреть 100 лекций по react', completed: false}
     ],
     newTaskText: ''
 };
 
 const tasksReducer = (state = initialState, action) => {
-
     switch (action.type) {
         case ADD_TASK: {
             let newTask = {
-                id: 5,
+                id: state.arrListData.length,
                 description: state.newTaskText,
                 completed: false
             };
-            let stateCopy = {
+            return {
                 ...state,
-                arrListData: [...state.arrListData]
+                arrListData: [...state.arrListData, newTask],
+                newTaskText: ''
             };
-            stateCopy.arrListData.push(newTask);
-            stateCopy.newTaskText = '';
-            return stateCopy;
         }
         case UPDATE_NEW_TASK_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newTaskText = action.updateTask;
-            return stateCopy;
+            return {
+                ...state,
+                newTaskText: action.updateTask
+            };
         }
         default:
             return state;

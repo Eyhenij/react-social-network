@@ -13,10 +13,10 @@ let initialState =
 
     {
         arrPosts: [
-            {id: 1, likesCounte: 15, post: 'Hi! How are you?'},
-            {id: 2, likesCounte: 12, post: 'This is my first post'},
-            {id: 3, likesCounte: 9, post: 'blablabla'},
-            {id: 4, likesCounte: 3, post: 'ahhrrrr'}
+            {id: 0, likesCounte: 15, post: 'Hi! How are you?'},
+            {id: 1, likesCounte: 12, post: 'This is my first post'},
+            {id: 2, likesCounte: 9, post: 'blablabla'},
+            {id: 3, likesCounte: 3, post: 'ahhrrrr'}
         ],
         newPostText: ''
     };
@@ -25,22 +25,21 @@ const postsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST: {
             let newPost = {
-                id: 5,
+                id: state.arrPosts.length,
                 likesCounte: 0,
                 post: state.newPostText
             };
-            let stateCopy = {
+            return {
                 ...state,
-                arrPosts: [...state.arrPosts]
+                arrPosts: [...state.arrPosts, newPost],
+                newPostText: ''
             };
-            stateCopy.arrPosts.push(newPost);
-            stateCopy.newPostText = '';
-            return stateCopy;
         }
         case UPDATE_NEW_POST_TEXT: {
-            let stateCopy = {...state};
-            stateCopy.newPostText = action.updatePost;
-            return stateCopy;
+            return {
+                ...state,
+                newPostText: action.updatePost
+            };
         }
         default:
             return state;

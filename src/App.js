@@ -4,11 +4,11 @@ import Header from './components/header/header.jsx';
 import Sidebar from './components/sidebar/sidebar.jsx';
 import Profile from './components/profile/profile.jsx';
 import News from "./components/news/news";
-import Music from "./components/music/music";
 import Settings from "./components/settings/settings";
 import {Route} from "react-router-dom";
 import MessagesContainer from "./components/messages/messagesContainer";
 import TasksContainer from "./components/tasks/tasksContainer";
+import Contacts from "./components/contacts/contacts";
 
 
 const App = () => {
@@ -18,10 +18,10 @@ const App = () => {
                 <div className={s.page__sidebar}><Sidebar/></div>
                 <div className={s.page__content}>
                     <Route path='/profile' render={()=> <Profile />}/>
+                    <Route path='/contacts' render={()=> <Contacts />}/>
                     <Route path='/messages' render={()=> <MessagesContainer />}/>
                     <Route path='/tasks' render={()=> <TasksContainer />}/>
                     <Route path='/news' render={ ()=> <News />}/>
-                    <Route path='/music' render={ ()=> <Music />}/>
                     <Route path='/settings' render={()=> <Settings />}/>
                 </div>
             </div>
