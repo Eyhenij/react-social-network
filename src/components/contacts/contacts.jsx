@@ -1,13 +1,22 @@
 import React from 'react';
 import s from './contacts.module.css';
+import * as axios from 'axios';
+import avatar from './../../assets/images/avatar.webp'
 
 const Contacts = (props) => {
-    return <div>
+
+    if (props.arrUsers.length === 0) {
+        axios.get('https://social-network.samuraijs.com/api/1.0/users').then( response => {
+            props.setUsers(response.data.items)
+        })
+    }
+
+    return <div className={s.contacts__page}>
         {
             props.arrUsers.map(c => <div key={c.id} className={s.community__item}>
                 <span>
                     <div>
-                        <img className={s.avatarCapture} src={c.avatar} alt={'аватарка'} />
+                        <img className={s.avatarCapture} src={c.photos.small != null ? c.photos.small: avatar} alt={'аватарка'} />
                     </div>
                     <div>
                         { c.followed

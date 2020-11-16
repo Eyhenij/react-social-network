@@ -10,13 +10,15 @@
 
 .community__item:hover {
     /*background-color: rgb(0, 163, 163);*/
-    color: gold;
+    color: white;
 
 }
 
 .item__description {
     border: 1px solid #000;
     width: 80%;
+    padding: 0 0 0 30px;
+    margin: 0 0 0 20px;
 }
 
 .item__name {
@@ -25,8 +27,8 @@
 }
 
 .item__name:hover {
-    background-color: rgb(0, 163, 163);
-    color: white;
+    /*background-color: rgb(0, 163, 163);*/
+    /*color: white;*/
 }
 
 /*.active {*/
