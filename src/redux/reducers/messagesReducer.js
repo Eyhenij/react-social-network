@@ -20,8 +20,16 @@ let initialState = {
             name: 'Olga',
             avatar: 'https://cdn1.iconfinder.com/data/icons/users-avatars-2/128/girl_avatar_4-512.png'
         },
-        {id: 3, name: 'Peter', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/02-512.png'},
-        {id: 4, name: 'John', avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'},
+        {
+            id: 3,
+            name: 'Peter',
+            avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/02-512.png'
+        },
+        {
+            id: 4,
+            name: 'John',
+            avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'
+        },
     ]
 };
 const messagesReducer = (state = initialState, action) => {

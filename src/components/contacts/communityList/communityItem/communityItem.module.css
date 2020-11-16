@@ -1,0 +1,30 @@
+.community__item {
+    display: flex;
+    padding: 10px 0 20px 20px;
+}
+
+.item__description {
+    border: 1px solid #000;
+    width: 80%;
+}
+
+.item__name {
+    text-decoration: none;
+    /*background-color: cornflowerblue;*/
+}
+
+.item__name:hover {
+    background-color: rgb(0, 163, 163);
+    color: white;
+}
+
+.active {
+    padding: 0 0 0 20px;
+    color: gold;
+}
+
+.avatarCapture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}

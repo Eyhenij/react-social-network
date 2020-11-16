@@ -8,7 +8,7 @@ import Settings from "./components/settings/settings";
 import {Route} from "react-router-dom";
 import MessagesContainer from "./components/messages/messagesContainer";
 import TasksContainer from "./components/tasks/tasksContainer";
-import Contacts from "./components/contacts/contacts";
+import ContactsContainer from "./components/contacts/contactsContainer";
 
 
 const App = () => {
@@ -18,7 +18,7 @@ const App = () => {
                 <div className={s.page__sidebar}><Sidebar/></div>
                 <div className={s.page__content}>
                     <Route path='/profile' render={()=> <Profile />}/>
-                    <Route path='/contacts' render={()=> <Contacts />}/>
+                    <Route path='/contacts' render={()=> <ContactsContainer />}/>
                     <Route path='/messages' render={()=> <MessagesContainer />}/>
                     <Route path='/tasks' render={()=> <TasksContainer />}/>
                     <Route path='/news' render={ ()=> <News />}/>

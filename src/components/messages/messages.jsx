@@ -2,6 +2,7 @@ import React from 'react';
 import s from './messages.module.css';
 import Message from "./dialogs/message/message";
 import DialogItem from "./dialogs/dialodItem";
+// import CommunityList from "../contacts/communityList/communityList";
 
 
 const Messages = (state) => {
@@ -10,7 +11,7 @@ const Messages = (state) => {
         )
     let messagesItems = state.messagesPage.arrMessages.map(m =>
         <Message message={m.message} id={m.id} key={m.id}/>
-        )
+    )
     const onAddMessage = () => {
         state.addMessage();
     }
@@ -24,9 +25,12 @@ const Messages = (state) => {
         <div className={s.community}>
             <div className={s.community__item}>
                 {communityItems}
+                {/*<CommunityList/>*/}
             </div>
-            <div className={s.messages}>
-                {messagesItems}
+            <div>
+                <div className={s.messages}>
+                    {messagesItems}
+                </div>
                 <div>
                     <textarea
                         value={state.messagesPage.newMessageText}

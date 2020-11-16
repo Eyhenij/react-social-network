@@ -1,26 +1,32 @@
 import React from 'react';
 import Contacts from "./contacts";
-import {connect} from 'react-redux';
-import {addContactActionCreator, updateNewContactTextActionCreator} from "../../redux/reducers/contactsReducer";
+import {followAC, setUsersAC, showContactAC, unFollowAC} from "../../redux/reducers/contactsReducer";
+import {connect} from "react-redux";
 
 
 const mapStateToProps = (state) => {
+
     return {
-        contactsPage: state.contactsPage
+        arrUsers: state.contactsPage.arrUsers
     }
 };
 const mapDispatchToProps = (dispatch) => {
     return {
-        addContact: () => {
-            dispatch(addContactActionCreator())
+        showContacts: () => {
+            dispatch(showContactAC());
         },
-
-        updateNewContactText: (contactText) => {
-            dispatch(updateNewContactTextActionCreator(contactText))
+        follow: (userId) => {
+            dispatch(followAC(userId));
+        },
+        unFollow: (userId) => {
+            dispatch(unFollowAC(userId));
+        },
+        setUsers: (users) => {
+            dispatch(setUsersAC(users));
         }
-    };
+    }
 };
 
-const ContactsContainer = connect(mapStateToProps, mapDispatchToProps) (Contacts);
+const ContactsContainer = connect(mapStateToProps, mapDispatchToProps)(Contacts);
 
 export default ContactsContainer;
