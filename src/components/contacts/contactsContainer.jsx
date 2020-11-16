@@ -15,11 +15,11 @@ const mapDispatchToProps = (dispatch) => {
         showContacts: () => {
             dispatch(showContactAC());
         },
-        follow: (userId) => {
-            dispatch(followAC(userId));
+        follow: (id) => {
+            dispatch(followAC(id));
         },
-        unFollow: (userId) => {
-            dispatch(unFollowAC(userId));
+        unFollow: (id) => {
+            dispatch(unFollowAC(id));
         },
         setUsers: (users) => {
             dispatch(setUsersAC(users));

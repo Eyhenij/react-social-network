@@ -2,3 +2,40 @@
     background-image: linear-gradient(to right, #e4afcb 0%, #b8cbb8 0%, #b8cbb8 0%, #e2c58b 30%, #c2ce9c 64%, #7edbdc 100%);
     height: 100vh;
 }
+
+.community__item {
+    display: flex;
+    padding: 10px 0 20px 20px;
+}
+
+.community__item:hover {
+    /*background-color: rgb(0, 163, 163);*/
+    color: gold;
+
+}
+
+.item__description {
+    border: 1px solid #000;
+    width: 80%;
+}
+
+.item__name {
+    text-decoration: none;
+    /*background-color: cornflowerblue;*/
+}
+
+.item__name:hover {
+    background-color: rgb(0, 163, 163);
+    color: white;
+}
+
+/*.active {*/
+/*    padding: 0 0 0 50px;*/
+/*    color: gold;*/
+/*}*/
+
+.avatarCapture {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
