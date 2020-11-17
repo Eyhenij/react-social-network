@@ -43,44 +43,83 @@ import avatar from '../../assets/images/avatar.webp'
 
 
 class Contacts extends React.Component {
-
-    getUsers = () => {
-    if (this.props.arrUsers.length === 0) {
-        axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
-            this.props.setUsers(response.data.items)
-        })
+    constructor(props) {
+        super(props);
     }
-}
+
+    componentDidMount() {
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            });
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.setUsers(response.data.items)
+            });
+    }
 
     render() {
-        return <div className={s.contacts__page}>
-            <button onClick={this.getUsers}>Get Users</button>
-            {
-            this.props.arrUsers.map(c => <div key={c.id} className={s.community__item}>
-                <span>
-                    <div>
-                        <img className={s.avatarCapture} src={c.photos.small != null ? c.photos.small: avatar} alt={'аватарка'} />
-                    </div>
-                    <div>
-                        { c.followed
-                            ? <button onClick = { () => { this.props.unFollow(c.id) } }>Unfollow</button>
-                            : <button onClick = { () => { this.props.follow(c.id) } }>Follow</button>
-                        }
-                    </div>
-                </span>
-                <span className={s.item__description}>
-                    <div className={s.item__name}>
-                        {c.name}
-                    </div>
-                    <div>
-                        {c.status}
-                    </div>
-                </span>
-                </div>
-            )
+
+        let pagesCounte = Math.ceil(this.props.totalUsersCounte / this.props.pageSize);
+
+        let pages = [];
+        for (let i = 1; i <= pagesCounte; i++) {
+            pages.push(i);
         }
-    </div>
+
+        return <div className={s.contacts__page}>
+            <div>
+                {pages.map( p => {
+                    return <span
+                        onClick={ () => this.onPageChanged(p)}
+                        className={this.props.currentPage === p ? s.selectedPage : s.pageNumber}
+                    >
+                        {p}
+                    </span>
+                })
+                }
+            </div>
+
+            {this.props.arrUsers.map(c =>
+                    <div key={c.id} className={s.community__item}>
+
+            <span>
+            <div>
+            <img className={s.avatarCapture}
+                 src={c.photos.small != null ? c.photos.small : avatar}
+                 alt={'аватарка'}
+            />
+            </div>
+            <div>
+            {c.followed
+                ? <button onClick={() => {
+                    this.props.unFollow(c.id)
+                }}>Unfollow</button>
+                : <button onClick={() => {
+                    this.props.follow(c.id)
+                }}>Follow</button>
+            }
+            </div>
+            </span>
+            <span className={s.item__description}>
+            <div className={s.item__name}>
+                {c.name}
+            </div>
+            <div>
+                <p>{c.status}</p>
+                <p>id:{c.id}</p>
+            </div>
+            </span>
+                    </div>
+            )
+            }
+        </div>
     }
 }
+
 
 export default Contacts;

@@ -2,6 +2,7 @@ const SHOW_MORE = 'SHOW-MORE';
 const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
+const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
 
 let initialState = {
     arrUsers: [
@@ -37,7 +38,10 @@ let initialState = {
             //     location: {city: 'Los0Angeles', country: 'USA'},
             //     avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'
             // }
-    ]
+    ],
+    pageSize: 5, //количество отображаемых на странице единиц информации (юзеров в нашем случае)
+    totalUsersCounte: 19, //кличество единиц передаваемых с сервера (хардкодим)
+    currentPage: 1 //номер текущей страницы (хардкодим)
 };
 
 const contactsReducer = (state = initialState, action) => {
@@ -64,14 +68,22 @@ const contactsReducer = (state = initialState, action) => {
                 })
             }
         }
+
+        //здесь мы перезатираем старый массив с эзерами на новый (обновляем данные на странице)
         case SET_USERS: {
             return {
                 ...state,
-                arrUsers: [...state.arrUsers, ...action.users]
+                arrUsers: action.users
             }
         }
         case SHOW_MORE: {
             return state
+        }
+        case SET_CURRENT_PAGE: {
+            return {
+                ...state,
+                currentPage: action.currentPage
+            }
         }
         default:
             return state;
@@ -82,5 +94,6 @@ export const showContactAC = () => ({type: SHOW_MORE});
 export const followAC = (userId) => ({type: FOLLOW, userId});
 export const unFollowAC = (userId) => ({type: UNFOLLOW, userId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
+export const setCurrentPageAC =(currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 
 export default contactsReducer;

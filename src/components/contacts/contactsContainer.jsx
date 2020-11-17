@@ -1,13 +1,17 @@
 import React from 'react';
 import Contacts from "./contacts";
-import {followAC, setUsersAC, showContactAC, unFollowAC} from "../../redux/reducers/contactsReducer";
+import {followAC, setCurrentPageAC, setUsersAC, showContactAC, unFollowAC} from "../../redux/reducers/contactsReducer";
 import {connect} from "react-redux";
 
 
 const mapStateToProps = (state) => {
 
     return {
-        arrUsers: state.contactsPage.arrUsers
+        arrUsers: state.contactsPage.arrUsers,
+        pageSize: state.contactsPage.pageSize,
+        totalUsersCounte: state.contactsPage.totalUsersCounte,
+        currentPage: state.contactsPage.currentPage,
+
     }
 };
 const mapDispatchToProps = (dispatch) => {
@@ -23,6 +27,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setUsers: (users) => {
             dispatch(setUsersAC(users));
+        },
+        setCurrentPage: (pageNumber) => {
+            dispatch(setCurrentPageAC(pageNumber));
         }
     }
 };
