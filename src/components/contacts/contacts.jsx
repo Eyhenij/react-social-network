@@ -50,7 +50,8 @@ class Contacts extends React.Component {
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
             .then(response => {
-                this.props.setUsers(response.data.items)
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
             });
     }
 
@@ -64,10 +65,10 @@ class Contacts extends React.Component {
 
     render() {
 
-        let pagesCounte = Math.ceil(this.props.totalUsersCounte / this.props.pageSize);
+        let pagesCount = Math.ceil(this.props.totalUsersCount / this.props.pageSize);
 
         let pages = [];
-        for (let i = 1; i <= pagesCounte; i++) {
+        for (let i = 1; i <= pagesCount; i++) {
             pages.push(i);
         }
 

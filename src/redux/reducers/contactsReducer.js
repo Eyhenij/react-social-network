@@ -3,6 +3,7 @@ const FOLLOW = 'FOLLOW';
 const UNFOLLOW = 'UNFOLLOW';
 const SET_USERS = 'SET-USERS';
 const SET_CURRENT_PAGE = 'SET-CURRENT-PAGE';
+const SET_TOTAL_USERS_COUNT = 'SET-TOTAL-USERS-COUNT';
 
 let initialState = {
     arrUsers: [
@@ -40,8 +41,8 @@ let initialState = {
             // }
     ],
     pageSize: 5, //количество отображаемых на странице единиц информации (юзеров в нашем случае)
-    totalUsersCounte: 19, //кличество единиц передаваемых с сервера (хардкодим)
-    currentPage: 1 //номер текущей страницы (хардкодим)
+    totalUsersCount: 20,
+    currentPage: 1 //номер текущей страницы (при загрузке страницы)
 };
 
 const contactsReducer = (state = initialState, action) => {
@@ -85,6 +86,12 @@ const contactsReducer = (state = initialState, action) => {
                 currentPage: action.currentPage
             }
         }
+        case SET_TOTAL_USERS_COUNT: {
+            return {
+                ...state,
+                totalUsersCount: action.value
+            }
+        }
         default:
             return state;
     }
@@ -94,6 +101,7 @@ export const showContactAC = () => ({type: SHOW_MORE});
 export const followAC = (userId) => ({type: FOLLOW, userId});
 export const unFollowAC = (userId) => ({type: UNFOLLOW, userId});
 export const setUsersAC = (users) => ({type: SET_USERS, users});
-export const setCurrentPageAC =(currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setCurrentPageAC = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+export const setTotalUsersCountAC = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, value: totalUsersCount})
 
 export default contactsReducer;
