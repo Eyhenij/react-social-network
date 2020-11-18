@@ -1,19 +1,11 @@
 import React from 'react';
 import s from './myPosts.module.css';
-import Post from "./post/post";
 
 
 const MyPosts = (props) => {
-    let postsItems = props.postsPage.arrPosts.map(p =>
-        <Post post={p.post} likesCounte={p.likesCounte} key={p.id}/>
-        )
-    const onAddPost = () => {
-        props.addPost();
-    }
 
     let onPostChange = (event) => {
-        let postText = event.target.value;
-        props.updateNewPostText(postText);
+        props.updateNewPostText(event.target.value);
     }
 
     return (
@@ -22,14 +14,31 @@ const MyPosts = (props) => {
                 <textarea
                     value={props.postsPage.newPostText}
                     placeholder='please, enter your message'
-                    onChange={onPostChange}
+                    onChange={
+                        // props.updateNewPostText()
+                        onPostChange
+                    }
                 />
             </div>
             <div>
-                <button className={s.button} onClick={onAddPost}>Add post</button>
+                <button className={s.button} onClick={() => props.addPost()}>Add post</button>
             </div>
-            <div className={s.post}>
-                {postsItems}
+            <div>
+                {props.postsPage.arrPosts.map(p =>
+                    <div key={p.id} >
+                        <span className={s.post__item}>
+                            <img
+                                src='https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSSrsa7JI0Kur9LTDnCQ-N3ctRlKSJ9zzbOFw&usqp=CAU'
+                                alt='аватарка'/>
+                            <span className={s.post__text}>{p.post}</span>
+                        </span>
+                        <span>
+                            <button className={s.button} name='like'>
+                                {`Like (${p.likesCounte})`}
+                            </button>
+                        </span>
+                    </div>
+                )}
             </div>
         </div>
     )

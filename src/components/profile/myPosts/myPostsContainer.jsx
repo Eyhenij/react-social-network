@@ -1,7 +1,7 @@
 import React from 'react';
-import MyPosts from './myPosts';
 import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/reducers/postsReduсer";
 import {connect} from "react-redux";
+import MyPostsAPIContainer from "./myPostsAPIContainer";
 
 const mapStateToProps = (state) => {
     return {
@@ -22,6 +22,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const MyPostsContainer = connect (mapStateToProps, mapDispatchToProps) (MyPosts);
+const MyPostsContainer = connect (mapStateToProps, mapDispatchToProps) (MyPostsAPIContainer);
 
 export default MyPostsContainer;
