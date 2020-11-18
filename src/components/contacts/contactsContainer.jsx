@@ -5,6 +5,7 @@ import {
     setTotalUsersCountAC,
     setUsersAC,
     showContactAC,
+    toggleIsFetchingAC,
     unFollowAC
 } from "../../redux/reducers/contactsReducer";
 import {connect} from "react-redux";
@@ -18,6 +19,7 @@ const mapStateToProps = (state) => {
         pageSize: state.contactsPage.pageSize,
         totalUsersCount: state.contactsPage.totalUsersCount,
         currentPage: state.contactsPage.currentPage,
+        isFetching: state.contactsPage.isFetching
 
     }
 };
@@ -40,6 +42,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         setTotalUsersCount: (totalCount) => {
             dispatch(setTotalUsersCountAC(totalCount));
+        },
+        toggleIsFetching: (isFetching) => {
+            dispatch(toggleIsFetchingAC(isFetching))
         }
     }
 };
