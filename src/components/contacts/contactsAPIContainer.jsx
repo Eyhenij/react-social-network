@@ -1,8 +1,7 @@
 import React from 'react';
 import * as axios from 'axios';
 import Contacts from "./contacts";
-import loading from '../../assets/loading/loading.svg';
-import Loader from "./contactsLoader";
+import Preloader from "./preloader";
 
 // const Contacts = (props) => {
 // let getUsers = () => {
@@ -72,10 +71,9 @@ class ContactsAPIContainer extends React.Component {
         debugger;
         return <>
             <div>
-                {/*{Loader}*/}
+                <Preloader isFetching={this.props.isFetching} />
                 {/*<img src={loading} alt={'loading'} />*/}
             </div>
-        {this.props.isFetching ? <img src={loading} alt={'loading'} /> : null}
         <Contacts
             totalUsersCount={this.props.totalUsersCount}
             pageSize={this.props.pageSize}
@@ -84,7 +82,6 @@ class ContactsAPIContainer extends React.Component {
             onPageChanged={this.onPageChanged}
             follow={this.props.follow}
             unFollow={this.props.unFollow}
-            // isFetching={this.props.isFetching}
         />
         </>
     }
