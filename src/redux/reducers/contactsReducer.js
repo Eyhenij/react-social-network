@@ -40,9 +40,9 @@ let initialState = {
             //     avatar: 'https://cdn1.iconfinder.com/data/icons/user-avatars-2/300/07-512.png'
             // }
     ],
-    pageSize: 5, //количество отображаемых на странице единиц информации (юзеров в нашем случае)
+    pageSize: 7, //количество отображаемых на странице единиц информации (юзеров в нашем случае)
     totalUsersCount: 20,
-    currentPage: 1 //номер текущей страницы (при загрузке страницы)
+    currentPage: 1 //задаём номер текущей страницы (при загрузке страницы)
 };
 
 const contactsReducer = (state = initialState, action) => {

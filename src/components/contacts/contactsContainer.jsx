@@ -1,5 +1,4 @@
 import React from 'react';
-import Contacts from "./contacts";
 import {
     followAC,
     setCurrentPageAC,
@@ -9,6 +8,7 @@ import {
     unFollowAC
 } from "../../redux/reducers/contactsReducer";
 import {connect} from "react-redux";
+import ContactsAPIContainer from "./contactsAPIContainer";
 
 
 const mapStateToProps = (state) => {
@@ -44,6 +44,6 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-const ContactsContainer = connect(mapStateToProps, mapDispatchToProps)(Contacts);
+const ContactsContainer = connect(mapStateToProps, mapDispatchToProps)(ContactsAPIContainer);
 
 export default ContactsContainer;
