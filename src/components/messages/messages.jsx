@@ -1,44 +1,53 @@
 import React from 'react';
 import s from './messages.module.css';
-import Message from "./dialogs/message/message";
-import DialogItem from "./dialogs/dialodItem";
+import avatar from "../../assets/images/avatar.webp";
+import {NavLink} from "react-router-dom";
 
 
-
-const Messages = (state) => {
-    let communityItems = state.messagesPage.arrCommunity.map(c =>
-        <DialogItem name={c.name} id={c.id} avatar={c.avatar} key={c.id}/>
-        )
-    let messagesItems = state.messagesPage.arrMessages.map(m =>
-        <Message message={m.message} id={m.id} key={m.id}/>
-    )
-    const onAddMessage = () => {
-        state.addMessage();
-    }
+const Messages = (props) => {
 
     let onMessageChange = (event) => {
-        let messageText = event.target.value;
-        state.updateNewMessageText(messageText);
+        props.updateNewMessageText(event.target.value);
     }
 
     return (
         <div className={s.community}>
             <div className={s.community__item}>
-                {communityItems}
+                {props.messagesPage.arrCommunity.map(c => {
+                    return <span key={c.id}>
+                        <div>
+                            <NavLink className={s.item__name} activeClassName={s.active} to={`/messages/${c.id}`}>
+                                <img className={s.avatarCapture}
+                                     src={c.avatar != null ? c.avatar : avatar}
+                                     alt={'аватарка'}
+                                />
+                                {c.name}
+                            </NavLink>
+                        </div>
+                     </span>
+                    })
+                }
             </div>
             <div>
                 <div className={s.messages}>
-                    {messagesItems}
+                    {props.messagesPage.arrMessages.map(m =>
+                        <div key={m.id}>
+                            {m.message}
+                        </div>
+                    )}
                 </div>
                 <div>
                     <textarea
-                        value={state.messagesPage.newMessageText}
+                        value={props.messagesPage.newMessageText}
                         placeholder='please, enter your message'
-                        onChange={onMessageChange}
+                        onChange={
+                            // () => props.updateNewMessageText()
+                            onMessageChange
+                        }
                     />
                 </div>
                 <div>
-                    <button onClick={onAddMessage}>Send message</button>
+                    <button onClick={() => props.addMessage()}>Send message</button>
                 </div>
             </div>
         </div>
