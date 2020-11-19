@@ -3,10 +3,10 @@ import s from './preloader.module.css';
 import loading from "../../assets/loading/loading.svg";
 
 
-const Preloader = (props) => {
+const Preloader = () => {
     return <div>
 
-        {props.isFetching ? <img src={loading} alt={'loading'} /> : null}
+        <img src={loading} alt={'loading'} />
 
         {/*<div className={s.loading}>*/}
         {/*    <div className={s.ld}>*/}

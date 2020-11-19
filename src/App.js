@@ -2,13 +2,13 @@ import React from 'react';
 import s from './App.module.css';
 import Header from './components/header/header.jsx';
 import Sidebar from './components/sidebar/sidebar.jsx';
-import ProfileContainer from './components/profile/profile.jsx';
 import News from "./components/news/news";
 import Settings from "./components/settings/settings";
 import {Route} from "react-router-dom";
 import MessagesContainer from "./components/messages/messagesContainer";
 import TasksContainer from "./components/tasks/tasksContainer";
 import ContactsContainer from "./components/contacts/contactsContainer";
+import ProfileContainer from "./components/profile/profileContainer";
 
 
 const App = () => {

@@ -70,8 +70,7 @@ class ContactsAPIContainer extends React.Component {
     render() {
         return <>
             <div>
-                <Preloader isFetching={this.props.isFetching} />
-                {/*<img src={loading} alt={'loading'} />*/}
+                {this.props.isFetching ? <Preloader /> : null}
             </div>
         <Contacts
             totalUsersCount={this.props.totalUsersCount}

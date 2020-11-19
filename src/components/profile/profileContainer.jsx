@@ -6,9 +6,9 @@ import {addPost, setUserProfile, updateNewPostText} from "../../redux/reducers/p
 
 class ProfileContainer extends React.Component {
 
-    // constructor(props) {
-    //     super(props);
-    // }
+    constructor(props) {
+        super(props);
+    }
 
     componentDidMount() {
         axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`)
