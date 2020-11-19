@@ -2,7 +2,7 @@ import React from 'react';
 import s from './App.module.css';
 import Header from './components/header/header.jsx';
 import Sidebar from './components/sidebar/sidebar.jsx';
-import Profile from './components/profile/profile.jsx';
+import ProfileContainer from './components/profile/profile.jsx';
 import News from "./components/news/news";
 import Settings from "./components/settings/settings";
 import {Route} from "react-router-dom";
@@ -17,7 +17,7 @@ const App = () => {
                 <div className={s.page__header}><Header/></div>
                 <div className={s.page__sidebar}><Sidebar/></div>
                 <div className={s.page__content}>
-                    <Route path='/profile' render={()=> <Profile />}/>
+                    <Route path='/profile' render={()=> <ProfileContainer />}/>
                     <Route path='/contacts' render={()=> <ContactsContainer />}/>
                     <Route path='/messages' render={()=> <MessagesContainer />}/>
                     <Route path='/tasks' render={()=> <TasksContainer />}/>

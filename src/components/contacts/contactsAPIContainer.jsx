@@ -68,7 +68,6 @@ class ContactsAPIContainer extends React.Component {
     }
 
     render() {
-        debugger;
         return <>
             <div>
                 <Preloader isFetching={this.props.isFetching} />

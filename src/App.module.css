@@ -4,7 +4,7 @@
   display: grid;
   grid-template-areas:
     "h h h"
-    "s p p";
+    "s c c";
   grid-template-rows: 50px;
   grid-template-columns: 1fr 5fr;
   grid-gap: 3px;
@@ -35,7 +35,7 @@
 }
 
 .page__content {
-  /*grid-area: d;*/
+  grid-area: c;
   background-color: cornflowerblue;
 }
 
