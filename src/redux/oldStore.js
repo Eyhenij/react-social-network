@@ -1,4 +1,4 @@
-import postsReducer from "./reducers/postsReduсer";
+import postsReducer from "./reducers/profileReduсer";
 import messagesReducer from "./reducers/messagesReducer";
 import headerReducer from "./reducers/headerReducer";
 import sidebarReducer from "./reducers/sidebarReducer";
