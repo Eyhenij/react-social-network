@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Eyhenij/Social-Network.git/static/css/main.22d75076.chunk.css",
+    "main.js": "/Eyhenij/Social-Network.git/static/js/main.a6d807dc.chunk.js",
+    "main.js.map": "/Eyhenij/Social-Network.git/static/js/main.a6d807dc.chunk.js.map",
+    "runtime-main.js": "/Eyhenij/Social-Network.git/static/js/runtime-main.4d436b1c.js",
+    "runtime-main.js.map": "/Eyhenij/Social-Network.git/static/js/runtime-main.4d436b1c.js.map",
+    "static/js/2.ef7ec31f.chunk.js": "/Eyhenij/Social-Network.git/static/js/2.ef7ec31f.chunk.js",
+    "static/js/2.ef7ec31f.chunk.js.map": "/Eyhenij/Social-Network.git/static/js/2.ef7ec31f.chunk.js.map",
+    "index.html": "/Eyhenij/Social-Network.git/index.html",
+    "static/css/main.22d75076.chunk.css.map": "/Eyhenij/Social-Network.git/static/css/main.22d75076.chunk.css.map",
+    "static/js/2.ef7ec31f.chunk.js.LICENSE.txt": "/Eyhenij/Social-Network.git/static/js/2.ef7ec31f.chunk.js.LICENSE.txt",
+    "static/media/avatar.21d32664.webp": "/Eyhenij/Social-Network.git/static/media/avatar.21d32664.webp",
+    "static/media/loading.b5e6e4d8.svg": "/Eyhenij/Social-Network.git/static/media/loading.b5e6e4d8.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4d436b1c.js",
+    "static/js/2.ef7ec31f.chunk.js",
+    "static/css/main.22d75076.chunk.css",
+    "static/js/main.a6d807dc.chunk.js"
+  ]
+}
