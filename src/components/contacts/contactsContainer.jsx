@@ -9,11 +9,56 @@ import {
     unFollow
 } from "../../redux/reducers/contactsReducer";
 import {connect} from "react-redux";
-import ContactsAPIContainer from "./contactsAPIContainer";
+import * as axios from "axios";
+import Preloader from "../preloader/preloader";
+import Contacts from "./contacts";
 
+
+
+class ContactsContainer extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentDidMount() {
+        this.props.toggleIsFetching(true);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.toggleIsFetching(false);
+                this.props.setUsers(response.data.items);
+                this.props.setTotalUsersCount(response.data.totalCount);
+            });
+    }
+
+    onPageChanged = (pageNumber) => {
+        this.props.setCurrentPage(pageNumber);
+        this.props.toggleIsFetching(true);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+            .then(response => {
+                this.props.toggleIsFetching(false)
+                this.props.setUsers(response.data.items)
+            });
+    }
+
+    render() {
+        return <>
+            <div>
+                {this.props.isFetching ? <Preloader /> : null}
+            </div>
+            <Contacts
+                totalUsersCount={this.props.totalUsersCount}
+                pageSize={this.props.pageSize}
+                currentPage={this.props.currentPage}
+                arrUsers={this.props.arrUsers}
+                onPageChanged={this.onPageChanged}
+                follow={this.props.follow}
+                unFollow={this.props.unFollow}
+            />
+        </>
+    }
+}
 
 const mapStateToProps = (state) => {
-
     return {
         arrUsers: state.contactsPage.arrUsers,
         pageSize: state.contactsPage.pageSize,
@@ -23,6 +68,7 @@ const mapStateToProps = (state) => {
 
     }
 };
+
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         showContacts: () => {
@@ -49,7 +95,7 @@ const mapStateToProps = (state) => {
 //      }
 // };
 
-const ContactsContainer = connect(mapStateToProps, {
+export default connect(mapStateToProps, {
         showContacts,
         follow,
         unFollow,
@@ -59,6 +105,4 @@ const ContactsContainer = connect(mapStateToProps, {
         toggleIsFetching
     }
 )
-(ContactsAPIContainer);
-
-export default ContactsContainer;
+(ContactsContainer);

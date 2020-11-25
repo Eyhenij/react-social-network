@@ -1,27 +1,30 @@
 import React from 'react';
-import {addMessageActionCreator, updateNewMessageTextActionCreator} from "../../redux/reducers/messagesReducer";
+import {addMessage, updateNewMessageText} from "../../redux/reducers/messagesReducer";
 import {connect} from "react-redux";
-import MessagesAPIContainer from "./messagesAPIContainer";
+import Messages from "./messages";
+
+
+class MessagesContainer extends React.Component {
+    constructor(props) {
+        super(props);
+    };
+
+    // componentDidMount() {
+    // }
+
+    render() {
+        return <Messages
+            messagesPage={this.props.messagesPage}
+            addMessage={this.props.addMessage}
+            updateNewMessageText={this.props.updateNewMessageText}
+        />
+    };
+}
 
 const mapStateToProps = (state) => {
     return {
         messagesPage: state.messagesPage
-    }
+    };
 };
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-
-        addMessage: () => {
-            dispatch(addMessageActionCreator())
-        },
-
-        updateNewMessageText: (messageText) => {
-            dispatch(updateNewMessageTextActionCreator(messageText))
-        }
-    }
-};
-
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(MessagesAPIContainer);
-
-export default MessagesContainer;
+export default connect(mapStateToProps, {addMessage, updateNewMessageText})(MessagesContainer);

@@ -32,6 +32,7 @@ let initialState = {
         },
     ]
 };
+
 const messagesReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_MESSAGE: {
@@ -56,9 +57,7 @@ const messagesReducer = (state = initialState, action) => {
     }
 }
 
-
-export const addMessageActionCreator = () => ({type: ADD_MESSAGE});
-export const updateNewMessageTextActionCreator = (messageText) =>
-    ({type: UPDATE_NEW_MESSAGE_TEXT, updateMessage: messageText});
+export const addMessage = () => ({type: ADD_MESSAGE});
+export const updateNewMessageText = (updateMessage) => ({type: UPDATE_NEW_MESSAGE_TEXT, updateMessage});
 
 export default messagesReducer;
