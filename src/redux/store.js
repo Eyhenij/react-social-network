@@ -5,6 +5,7 @@ import sidebarReducer from "./reducers/sidebarReducer";
 import tasksReducer from "./reducers/tasksReducer";
 import contactsReducer from "./reducers/contactsReducer";
 import profileReducer from "./reducers/profileReduсer";
+import authReducer from "./reducers/authReduсer";
 
 
 let reducers = combineReducers({
@@ -14,7 +15,7 @@ let reducers = combineReducers({
     sidebarItems: sidebarReducer,
     tasksPage: tasksReducer,
     contactsPage: contactsReducer,
-
+    auth: authReducer,
 });
 
 let store = createStore(reducers);
