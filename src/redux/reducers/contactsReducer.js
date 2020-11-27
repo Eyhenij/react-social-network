@@ -42,7 +42,7 @@ let initialState = {
             // }
     ],
     pageSize: 7, //количество отображаемых на странице единиц информации (юзеров в нашем случае)
-    totalUsersCount: 20,
+    totalUsersCount: null,
     currentPage: 1, //задаём номер текущей страницы (при загрузке страницы)
     isFetching: true
 };
