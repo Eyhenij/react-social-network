@@ -2,7 +2,6 @@ import React from 'react';
 import s from './contacts.module.css';
 import avatar from '../../assets/images/avatar.webp'
 import {NavLink} from "react-router-dom";
-import {followAPI} from "../../api/api";
 
 
 let Contacts = (props) => {
@@ -42,25 +41,9 @@ let Contacts = (props) => {
                         <div>
                             {c.followed
                                 ? <button disabled={props.followingInProgress.some(id => id === c.id)}
-                                          onClick={() => {
-                                              props.toggleFollowingProgress(true, c.id);
-                                              followAPI.unFollow(c.id).then(data => {
-                                                  if (data.resultCode === 0) {
-                                                      props.unFollow(c.id)
-                                                  }
-                                                  props.toggleFollowingProgress(false, c.id);
-                                              });
-                                          }}>Unfollow</button>
+                                          onClick={() => { props.unFollowThunk(c.id) }}>Unfollow</button>
                                 : <button disabled={props.followingInProgress.some(id => id === c.id)}
-                                          onClick={() => {
-                                              props.toggleFollowingProgress(true, c.id);
-                                              followAPI.follow(c.id).then(data => {
-                                                  if (data.resultCode === 0) {
-                                                      props.follow(c.id)
-                                                  }
-                                                  props.toggleFollowingProgress(false, c.id);
-                                              });
-                                          }}>Follow</button>
+                                          onClick={() => { props.followThunk(c.id) }}>Follow</button>
                             }
                         </div>
                     </span>
