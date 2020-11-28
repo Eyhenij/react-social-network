@@ -6,6 +6,7 @@ import {
     setUsers,
     showContacts,
     toggleIsFetching,
+    toggleFollowingProgress,
     unFollow
 } from "../../redux/reducers/contactsReducer";
 import {connect} from "react-redux";
@@ -19,7 +20,6 @@ class ContactsContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true);
-        debugger;
         usersAPI.getUsers(this.props.currentPage, this.props.pageSize).then(data => {
                 this.props.toggleIsFetching(false);
                 this.props.setUsers(data.items);
@@ -49,6 +49,8 @@ class ContactsContainer extends React.Component {
                 onPageChanged={this.onPageChanged}
                 follow={this.props.follow}
                 unFollow={this.props.unFollow}
+                toggleFollowingProgress={this.props.toggleFollowingProgress}
+                followingInProgress={this.props.followingInProgress}
             />
         </>
     }
@@ -60,11 +62,12 @@ const mapStateToProps = (state) => {
         pageSize: state.contactsPage.pageSize,
         totalUsersCount: state.contactsPage.totalUsersCount,
         currentPage: state.contactsPage.currentPage,
-        isFetching: state.contactsPage.isFetching
-
+        isFetching: state.contactsPage.isFetching,
+        followingInProgress: state.contactsPage.followingInProgress
     }
 };
 
+// оставил для примера:
 // const mapDispatchToProps = (dispatch) => {
 //     return {
 //         showContacts: () => {
@@ -98,7 +101,8 @@ export default connect(mapStateToProps, {
         setUsers,
         setCurrentPage,
         setTotalUsersCount,
-        toggleIsFetching
+        toggleIsFetching,
+        toggleFollowingProgress
     }
 )
 (ContactsContainer);

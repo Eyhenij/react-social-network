@@ -41,20 +41,26 @@ let Contacts = (props) => {
                         </div>
                         <div>
                             {c.followed
-                                ? <button onClick={() => {
-                                        followAPI.unFollow(c.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.unFollow(c.id)
-                                            }
-                                        });
-                                }}>Unfollow</button>
-                                : <button onClick={() => {
-                                        followAPI.follow(c.id).then(data => {
-                                            if (data.resultCode === 0) {
-                                                props.follow(c.id)
-                                            }
-                                        });
-                                }}>Follow</button>
+                                ? <button disabled={props.followingInProgress.some(id => id === c.id)}
+                                          onClick={() => {
+                                              props.toggleFollowingProgress(true, c.id);
+                                              followAPI.unFollow(c.id).then(data => {
+                                                  if (data.resultCode === 0) {
+                                                      props.unFollow(c.id)
+                                                  }
+                                                  props.toggleFollowingProgress(false, c.id);
+                                              });
+                                          }}>Unfollow</button>
+                                : <button disabled={props.followingInProgress.some(id => id === c.id)}
+                                          onClick={() => {
+                                              props.toggleFollowingProgress(true, c.id);
+                                              followAPI.follow(c.id).then(data => {
+                                                  if (data.resultCode === 0) {
+                                                      props.follow(c.id)
+                                                  }
+                                                  props.toggleFollowingProgress(false, c.id);
+                                              });
+                                          }}>Follow</button>
                             }
                         </div>
                     </span>
