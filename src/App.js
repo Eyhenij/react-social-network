@@ -9,6 +9,7 @@ import TasksContainer from "./components/tasks/tasksContainer";
 import ContactsContainer from "./components/contacts/contactsContainer";
 import ProfileContainer from "./components/profile/profileContainer";
 import HeaderContainer from "./components/header/headerContainer";
+import LoginPage from "./components/login/login";
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
                 <div className={s.page__header}><HeaderContainer/></div>
                 <div className={s.page__sidebar}><Sidebar/></div>
                 <div className={s.page__content}>
-                    {/*<Route path='/login' render={()=> <LoginPage />}/>*/}
+                    <Route path='/login' render={()=> <LoginPage />}/>
                     <Route path='/profile/:id?' render={()=> <ProfileContainer />}/>
                     <Route path='/contacts' render={()=> <ContactsContainer />}/>
                     <Route path='/messages' render={()=> <MessagesContainer />}/>

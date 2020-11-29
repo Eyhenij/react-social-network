@@ -1,9 +1,9 @@
 import React from 'react';
 import {
     followThunk,
-    setCurrentPage,
     unFollowThunk,
-    getUsersThunk
+    getUsersThunk,
+    onPageChangedThunk
 } from "../../redux/reducers/contactsReducer";
 import {connect} from "react-redux";
 import Preloader from "../preloader/preloader";
@@ -18,8 +18,7 @@ class ContactsContainer extends React.Component {
     }
 
     onPageChanged = (pageNumber) => {
-        this.props.getUsersThunk(pageNumber, this.props.pageSize);
-        this.props.setCurrentPage(pageNumber);
+        this.props.onPageChangedThunk(pageNumber, this.props.pageSize);
     }
 
     render() {
@@ -79,4 +78,4 @@ const mapStateToProps = (state) => {
 //      }
 // };
 
-export default connect(mapStateToProps, {followThunk, unFollowThunk, setCurrentPage, getUsersThunk}) (ContactsContainer);
+export default connect(mapStateToProps, {followThunk, unFollowThunk, getUsersThunk, onPageChangedThunk}) (ContactsContainer);

@@ -106,7 +106,7 @@ const contactsReducer = (state = initialState, action) => {
 export const showContacts = () => ({type: SHOW_MORE});
 export const follow = (userId) => ({type: FOLLOW, userId});
 export const unFollow = (userId) => ({type: UNFOLLOW, userId});
-export const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
+const setCurrentPage = (currentPage) => ({type: SET_CURRENT_PAGE, currentPage});
 const setUsers = (users) => ({type: SET_USERS, users});
 const setTotalUsersCount = (totalUsersCount) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount});
 const toggleIsFetching = (isFetching) => ({type: TOGGLE_IS_FETCHING, isFetching})
@@ -119,6 +119,11 @@ export const getUsersThunk = (currentPage, pageSize) => (dispatch) => {
         dispatch(setUsers(data.items));
         dispatch(setTotalUsersCount(data.totalCount));
     });
+}
+
+export const onPageChangedThunk = (pageNumber, pageSize) => (dispatch) => {
+    dispatch(getUsersThunk(pageNumber, pageSize));
+    dispatch(setCurrentPage(pageNumber));
 }
 
 export const unFollowThunk = (userID) => (dispatch) => {
@@ -136,9 +141,5 @@ export const followThunk = (userID) => (dispatch) => {
         dispatch(toggleFollowingProgress(false, userID));
     });
 }
-
-// setCurrentPage(pageNumber);
-
-
 
 export default contactsReducer;

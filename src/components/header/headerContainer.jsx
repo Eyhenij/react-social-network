@@ -6,8 +6,12 @@ import {authThunk} from "../../redux/reducers/authReduсer";
 
 class HeaderContainer extends React.Component {
 
-    componentDidMount() { this.props.authThunk() }
-    render() { return <Header {...this.props}/> }
+    componentDidMount() {
+        this.props.authThunk()
+    }
+    render() {
+        return <Header {...this.props}/>
+    }
 }
 
 const mapStateToProps = (state) => ({
