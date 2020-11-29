@@ -2,12 +2,14 @@ import React from 'react';
 import { connect } from "react-redux";
 import Profile from "./profile";
 import { addPost, updateNewPostText, setUserProfileThunk } from "../../redux/reducers/profileReduсer";
-import {Redirect, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
+import withAuthRedirect from "../../hoc/withAuthRedirect";
 
 class ProfileContainer extends React.Component {
 
     componentDidMount() {
         let userId = this.props.match.params.id;
+
         if (!userId) {
             userId = 2;
         }
@@ -15,7 +17,6 @@ class ProfileContainer extends React.Component {
     }
 
     render() {
-        if (!this.props.isAuth) return <Redirect to={'/login'} />;
         return (
             <div>
                 <Profile newPostText={this.props.newPostText}
@@ -29,14 +30,15 @@ class ProfileContainer extends React.Component {
     }
 }
 
+let AuthRedirectComponent = withAuthRedirect(ProfileContainer);
+
 const mapStateToProps = (state) => {
     return {
         arrPosts: state.profilePage.arrPosts,
         newPostText: state.profilePage.newPostText,
-        profile: state.profilePage.profile,
-        isAuth: state.auth.isAuth
+        profile: state.profilePage.profile
     }
 };
 
-const WithUrlDataContainerComponent = withRouter(ProfileContainer);
+const WithUrlDataContainerComponent = withRouter(AuthRedirectComponent);
 export default connect(mapStateToProps, {addPost, updateNewPostText, setUserProfileThunk})(WithUrlDataContainerComponent);
